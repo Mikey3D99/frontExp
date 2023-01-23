@@ -1,13 +1,13 @@
 <template>
     <div>
-      <h1>Home Page</h1>
-      <label>dupa</label>
+      <h1>404</h1>
+      <label>not found</label>
     </div>
   </template>
   
   <script>
   export default {
-    name: 'AboutPage'
+    name: 'NotFound'
   }
   </script>
   

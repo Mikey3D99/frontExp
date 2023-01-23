@@ -1,22 +1,14 @@
 <template>
   <div id="app" class="bg-color">
-    <LoginPage></LoginPage>
-    <UserList></UserList>
-    <RegisterPage></RegisterPage>
+    <router-view />
   </div>
 </template>
 
+
 <script>
-//import LoginPage from './components/LoginPage.vue';
-//import UserList from './components/UserList.vue';
-import RegisterPage from './components/RegisterPage.vue';
-
-
 export default {
   name: 'App',
   components: {
-    //UserList,
-    RegisterPage
 },
 }
 </script>

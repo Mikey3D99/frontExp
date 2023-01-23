@@ -22,6 +22,12 @@
             <label for="age">Age:</label>
             <input v-model="age" type="number" id="age" required  class="form-element">
             <br>
+            <label for="password">Password:</label>
+            <input v-model="password" type="text" id="password" required  class="form-element">
+            <br>
+            <label for="role">Role:</label>
+            <input v-model="role" type="text" id="role" required  class="form-element">
+            <br>
             <button type="submit" class="add-button" >Add User</button>
             <button @click="showAddUserForm = false" class="add-button">Cancel</button>
         </form>
@@ -45,6 +51,9 @@
             <label for="age">Age:</label>
             <input v-model="currentAge" type="number" id="age" required  class="form-element">
             <br>
+            <label for="role">Role:</label>
+            <input v-model="role" type="text" id="role" required  class="form-element">
+            <br>
             <button type="submit" @click="editUser(currentId)" class="add-button" >Update</button>
             <button @click="showEditUserForm = false" class="add-button">Cancel</button>
         </form>
@@ -57,6 +66,7 @@
           <th>Last Name</th>
           <th>Email</th>
           <th>Age</th>
+          <th>Role</th>
         </tr>
         <tr v-for="user in filteredUsers" :key="user.id">
           <td>{{ user.id }}</td>
@@ -64,13 +74,16 @@
           <td>{{ user.lastName }}</td>
           <td>{{ user.email}}</td>
           <td>{{ user.age}}</td>
+          <td>{{ user.role}}</td>
           <td>
             <button @click="deleteUser(user.id)" class="delete-button">Delete</button>
             <button @click="showEditUserForm = true, currentId = user.id,
             currentFirstName = user.firstName,
             currentLastName = user.lastName,
             currentAge = user.age,
-            currentEmail = user.email"
+            currentEmail = user.email,
+            currentRole = user.role
+            "
              class="edit-button">Edit</button>
           </td>
         </tr>
@@ -95,10 +108,13 @@ import axios from 'axios'
                 currentLastName: '',
                 currentEmail: '',
                 currentAge: 0,
+                currentRole: '',
                 firstName: '',
                 lastName: '',
                 email: '',
                 age: '',
+                password: '',
+                role: '',
             }
         },
         created() {
@@ -143,6 +159,8 @@ import axios from 'axios'
                 lastName: this.lastName,
                 email: this.email,
                 age: this.age,
+                password: this.password,
+                role: this.role
                 })
                 .then((response) => {
                     console.log(response.data);
@@ -151,6 +169,8 @@ import axios from 'axios'
                     this.lastName = '';
                     this.email = '';
                     this.age = '';
+                    this.password = '';
+                    this.role = '';
                     this.getUsers();
                 })
                 .catch(error => {
@@ -163,6 +183,7 @@ import axios from 'axios'
                 lastName: this.currentLastName,
                 email: this.currentEmail,
                 age: this.currentAge,
+                role: this.currentRole
                 })
                 .then((response) => {
                     console.log(response.data);
@@ -171,6 +192,7 @@ import axios from 'axios'
                     this.currentLastName = '';
                     this.currentEmail = '';
                     this.currentAge = 0;
+                    this.currentRole = '';
                     this.getUsers();
                 })
                 .catch(error => {
