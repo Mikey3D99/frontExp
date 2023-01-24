@@ -39,11 +39,11 @@ import axios from 'axios'
           if(response.status === 200) {
             console.log("Successfully authenticated!");
             console.log(response.data);
-            if(response.data === 'admin') {
+            if(response.data.role === 'admin') {
               this.$router.push({ name: 'userlist' });
             }
-            else if(response.data === 'user') {
-              this.$router.push({ name: 'home' });
+            else if(response.data.role === 'user') {
+              this.$router.push({ name: 'userpage', params: {id: response.data.id} });
             }
           } else {
             console.log(response);

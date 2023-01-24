@@ -5,6 +5,7 @@ import LoginPage from './../components/LoginPage'
 import NotFound from './../components/NotFound'
 import RegisterPage from './../components/RegisterPage'
 import UserList from './../components/UserList'
+import UserPage from './../components/UserPage'
 
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     name: 'userlist',
     path: '/users',
     component: UserList
+  },
+  {
+    name: 'userpage',
+    path: '/user/:id',
+    component: UserPage
   },
   {
     name: 'notfound',
